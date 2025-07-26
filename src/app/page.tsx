@@ -1,103 +1,37 @@
-import Image from "next/image";
+'use client';
+import { useRouter } from 'next/navigation';
 
 export default function Home() {
-  return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const router = useRouter();
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+  return (
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-gray-900 via-black to-gray-800 relative overflow-hidden">
+      {/* Glow effect */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute left-1/2 top-1/3 -translate-x-1/2 w-[400px] h-[400px] bg-yellow-400 opacity-20 blur-3xl rounded-full animate-pulse" />
+        <div className="absolute right-10 bottom-10 w-40 h-40 bg-blue-500 opacity-10 blur-2xl rounded-full" />
+      </div>
+      {/* Pac-Man Icon from SVG file */}
+      <div className="mb-8 z-10">
+        <svg width="100" height="100" viewBox="0 0 496.2 496.2" xmlns="http://www.w3.org/2000/svg" className="drop-shadow-xl">
+          <path style={{ fill: '#EA4949' }} d="M496.2,248.1C496.2,111.1,385.1,0,248.1,0S0,111.1,0,248.1s111.1,248.1,248.1,248.1 S496.2,385.1,496.2,248.1z" />
+          <path style={{ fill: '#EFCE2B' }} d="M399.7,158.5C369,106.7,312.6,72,248.1,72C150.9,72,72,150.8,72,248.1c0,97.2,78.8,176.1,176.1,176.1 c64.5,0,120.9-34.7,151.5-86.4l-152.8-89.6L399.7,158.5z M225,157.4c0-12,9.7-21.8,21.8-21.8c12.1,0,21.8,9.7,21.8,21.8 s-9.7,21.8-21.8,21.8S225,169.4,225,157.4z" />
+        </svg>
+      </div>
+      <h1 className="text-5xl font-extrabold mb-6 text-yellow-300 drop-shadow-lg z-10 tracking-tight">3D Pac-Man</h1>
+      <button
+        onClick={() => {
+          if (typeof window !== 'undefined') {
+            sessionStorage.setItem('pacman-session', '1');
+          }
+          router.push('/game');
+        }}
+        className="relative z-10 flex items-center gap-4 px-10 py-5 rounded-full bg-gradient-to-r from-yellow-300 via-yellow-400 to-yellow-500 shadow-2xl border-2 border-yellow-200/60 hover:from-yellow-400 hover:to-yellow-300 hover:scale-105 active:scale-95 transition-all duration-200 text-2xl font-extrabold text-black tracking-wide outline-none focus:ring-4 focus:ring-yellow-500/50 backdrop-blur-md"
+        style={{ boxShadow: '0 4px 32px 0 #ffe06699, 0 1.5px 0 #fff inset' }}
+      >
+        
+        <span className="drop-shadow">Play Game</span>
+      </button>
     </div>
   );
 }

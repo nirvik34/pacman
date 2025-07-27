@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: '3D Pac-Man',
-  description: 'A simple 3D Pac-Man Game in Next.js + Three.js',
+  description: 'A simple 3D Pac-Man Game',
 };
 
 export default function RootLayout({
@@ -12,8 +12,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body>{children}</body>
+    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
+      <body className="bg-black text-white font-sans">
+        <main>{children}</main>
+      </body>
     </html>
   );
 }

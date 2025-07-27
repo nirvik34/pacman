@@ -7,4 +7,5 @@ body {
   background: black;
   color: white;
   font-family: sans-serif;
+  @apply min-h-screen;
 }
